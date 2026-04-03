@@ -82,7 +82,7 @@ center lands in a residue class where one of center+/-1 = 0 (mod 5).
 
 5 = 2^2 + 1 (the first Level 1 prime) acts as congruence obstruction for ALL higher batteries.
 
-### The roles of 2 and 3: parity gate and shield
+### The roles of 2 and 3: parity gate and prime 3
 
 **Pure-2 addresses (a,0)**: centers = 4, 8, 16, 32, 64, 128...
 
@@ -120,11 +120,11 @@ This is the NS "self-limiting" pattern: the factor of 3 looks like it weakens th
 | Component | Role | Character |
 |-----------|------|-----------|
 | 2 | **Parity gate** -- makes center even, enables the +/- 1 split | Topological (projective geometries PG(n,2)) |
-| 3 | **Shield** -- absorbs mod-3 threat, protects both terminals | Algebraic (ternary structure, cubic symmetry) |
+| 3 | **Ternary absorber** -- absorbs mod-3 threat, protects both terminals | Algebraic (ternary structure, cubic symmetry) |
 | 5 | Congruence obstruction -- cannot be absorbed by {2,3}-smooth lattice | Algebraic (Fermat prime, congruence obstruction) |
 | 7 | Structural prime -- structures what survives into Fano geometry | Topological (Mersenne prime, PG(2,2)) |
 
-The hierarchy: 2 creates, 3 shields, 5 gates, 7 structures.
+The hierarchy: 2 creates, 3 prime 3s, 5 gates, 7 structures.
 
 **Why 5 is algebraic, not topological**: 5 = 2^2 + 1 is a Fermat prime. Mersenne primes
 (2^n - 1 = 3, 7, 31, 127) count points in projective spaces over GF(2) -- they define
@@ -160,7 +160,7 @@ Our address system confirms and extends her framework with numerical evidence.
 | Prime | Our name | Our name | Address | Role |
 |-------|-------------------|----------|---------|------|
 | 2 | The Binary Cleave | Parity Gate | generator | Makes center even, enables +/- 1 |
-| 3 | The Triadic structure prime | Shield + Amplifier | generator | Absorbs mod-3 threat; ln(3)=1.59*ln(2) amplifies harmonic weight |
+| 3 | The Triadic structure prime | ternary absorber + amplifier | generator | Absorbs mod-3 threat; ln(3)=1.59*ln(2) amplifies harmonic weight |
 | 5 | The Fermat prime | congruence prime | (2,0)+ | Congruence obstruction, blocks batteries at even word lengths |
 
 **Structure primes {7, 13, 19}** — the STRUCTURE layer:
@@ -230,7 +230,7 @@ This maps to our measurements:
    - structure prime 19 at center 18: twin is 17 (the second Gap, pure-2 Fermat)
 
 4. **structure prime mirrors**: 13=(2,1)+ and 19=(1,2)+ are the same word length with
-   swapped 2/3 ratio. 13 is 2-heavy (more parity), 19 is 3-heavy (more shielding).
+   swapped 2/3 ratio. 13 is 2-heavy (more parity), 19 is 3-heavy (more prime 3ing).
 
 5. **The lock product = Hardy-Ramanujan**: 7 * 13 * 19 = 1729 = 12^3 + 1.
    The three locks multiply to give a number whose smooth center 1728 = (2^2*3)^3
@@ -262,7 +262,7 @@ This maps to our measurements:
 
 | Layer | Primes | Names | Function |
 |-------|--------|-------|----------|
-| Generators | 2, 3, 5 | Parity/Transfer/Complexity | Creates, shields, gates |
+| Generators | 2, 3, 5 | Parity/Transfer/Complexity | Creates, prime 3s, gates |
 | Structure primes | 7, 13, 19 | Fano/Packing/Discriminant | Structures, bridges, locks |
 | Anomaly | 11 | anomalous | Shadows, generates noise |
 | Boundary prime | 17 | constructibility boundary | Constructible frontier, regulates |
@@ -561,7 +561,7 @@ to 0.008 (p=127). The harmonic weight decomposes into:
 - b * ln(3) = b * 1.099 -- the 3-component (59% stronger per unit!)
 
 At equal word length, more 3s = higher harmonic weight = louder signal.
-This is why 3 isn't just a shield -- it's an amplifier in the matched filter.
+This is why 3 isn't just a prime 3 -- it's an amplifier in the matched filter.
 
 At word length 5, batteries sit at BALANCED addresses:
 - (5,0)=32: half-twin pair, ln(center)=3.47 (weakest)
@@ -667,7 +667,7 @@ at points separated by 2/center wavelengths. The optimal separation is pi/2.
 - ****: Generators/Structure primes/Gaps architecture 
 - **1729 = 7*13*19**: structure prime product = Hardy-Ramanujan = 12^3+1, smooth center (6,3) word 9
 - **Our compare_weighting_zeta.py**: `Riemann/scripts/compare_weighting_zeta.py`
-- **NS self-limiting parallel**: 3's shield role mirrors nonlinearity self-starvation in NS
+- **NS self-limiting parallel**: 3's prime 3 role mirrors nonlinearity self-starvation in NS
 - **P_5 congruence obstruction connection**: R = P_7/P_5 eigenvalue ratio, 5 controls eigenvalue spacing
 - ** (asymmetric structure)**: P_5(7)=5^2 is Resonator, P_7(5)=-4x19 is Sealer
 - ** (self-correcting property)**: Q parabola = lens; Born Decoherent = spacing
@@ -724,9 +724,9 @@ returns information about the OTHER prime's role.
 
 P_7(t) = P_5(t) * Q(t) + R(t), where Q = t^2 - 16t + 67 and R is a degree-4 remainder.
 
-**Q(t) = (t - 8)^2 + 3** — a parabola centered at 2^3 with minimum 3 (the shield prime).
+**Q(t) = (t - 8)^2 + 3** — a parabola centered at 2^3 with minimum 3 (the prime 3 prime).
 
-The roots 8 +/- i*sqrt(3) = 2^3 +/- i*sqrt(3): real part = parity cubed, imaginary = sqrt(shield).
+The roots 8 +/- i*sqrt(3) = 2^3 +/- i*sqrt(3): real part = parity cubed, imaginary = sqrt(prime 3).
 Norm |root|^2 = 67 (Heegner prime, h(-67) = 1). Trace = 16 = center of Boundary prime 17.
 
 **Q pairs every alphabet prime with its structural complement:**
@@ -734,23 +734,23 @@ Norm |root|^2 = 67 (Heegner prime, h(-67) = 1). Trace = 16 = center of Boundary 
 | Prime p | |p - 8| = distance | Distance IS | Q(p) |
 |---------|-------------------|-------------|------|
 | 2 (parity) | 6 = 2x3 (alphabet cycle) | | 39 = 3 x 13 |
-| 3 (shield) | **5** (congruence obstruction!) | | 28 = 4 x **7** |
-| 5 (congruence obstruction) | **3** (shield!) | | 12 = 4 x 3 |
+| 3 (prime 3) | **5** (congruence obstruction!) | | 28 = 4 x **7** |
+| 5 (congruence obstruction) | **3** (prime 3!) | | 12 = 4 x 3 |
 | 7 (Fano) | 1 (unity) | | 4 = 2^2 |
-| 11 (anomaly) | **3** (shield!) | | 12 = 4 x 3 |
+| 11 (anomaly) | **3** (prime 3!) | | 12 = 4 x 3 |
 | 13 (keystone) | **5** (congruence obstruction!) | | 28 = 4 x **7** |
-| 17 (escapement) | 9 = 3^2 (shield^2) | | 84 = 4 x 3 x 7 |
+| 17 (escapement) | 9 = 3^2 (prime 3^2) | | 84 = 4 x 3 x 7 |
 | 19 (deep lock) | **11** (anomaly!) | | 124 = 4 x 31 |
 
 Mirror pairs under Q (symmetric around center 8):
-- Shield (3) <-> packing prime (13): separated by congruence obstruction distance 5
-- congruence prime (5) <-> Anomaly (11): separated by shield distance 3
+- prime 3 <-> packing prime (13): separated by congruence obstruction distance 5
+- congruence prime (5) <-> Anomaly (11): separated by prime 3 distance 3
 - Fano (7) <-> 3^2 (9): separated by unity distance 1
 
 The bridge polynomial PAIRS the primes using other primes as distances.
 Each pair's Q-value encodes their shared structure:
 Q(3) = Q(13) = 28 = 4 x 7 (contains Fano lock)
-Q(5) = Q(11) = 12 = 4 x 3 (contains shield)
+Q(5) = Q(11) = 12 = 4 x 3 (contains prime 3)
 
 Q is IRREDUCIBLE over GF(5) -- generates GF(25). The two "extra" eigenvalues
 that P_7 has beyond P_5 form an inseparable pair over the congruence obstruction's field.
@@ -758,7 +758,7 @@ that P_7 has beyond P_5 form an inseparable pair over the congruence obstruction
 ### The resultant: Res(P_5, P_7) = 2^14 x 13^2 x 1297
 
 1297 = 6^4 + 1 = (2x3)^4 + 1 is a Level 1 prime at address (4,4)+.
-Word length = 8 — the number of primes in the Geometric Alphabet.
+Word length = 8 — the number of primes in the prime hierarchy.
 
 The resultant (measuring "distance" between roots of P_5 and P_7) encodes:
 - 2^14: parity to the 14th power (the infrastructure)
@@ -769,7 +769,7 @@ The resultant (measuring "distance" between roots of P_5 and P_7) encodes:
 
 R(t) = -4(6t^4 - 100t^3 + 583t^2 - 1334t + 858)
 
-858 = 2 x 3 x 11 x 13 — contains anomaly x keystone x shield x parity.
+858 = 2 x 3 x 11 x 13 — contains anomaly x keystone x prime 3 x parity.
 
 R mod 13 splits completely: roots are {0, 1, 2, 5} = {origin, unity, parity, congruence obstruction}.
 The keystone sees the remainder as built entirely from Generators.
@@ -815,7 +815,7 @@ Coefficient of t: 2160 = 2^4 x 3^3 x 5 — all three Generators.
 
 ### Our Interpretation: The asymmetric structure 
 
-Independent analysis received the cross-evaluation chain and the congruence obstruction table. Her response
+Independent analysis received the cross-evaluation chain and the congruence obstruction table. The response
 identifies the geometry of the P_5/P_7 exchange. Key insights:
 
 **The duality**: She identifies the P_5(7) <-> P_7(5) exchange as a
@@ -847,9 +847,9 @@ This is a double interlock — like a ratchet that only turns one way.
 The chirality comes from the remainder R(t): Q is symmetric, but R breaks the symmetry.
 
 **self-correcting property**: The geometry of the exchange. In Navier-Stokes, blowup is
-impossible because the "Monster" (potential divergence) hits the congruence prime (5) and is
+impossible because the potential divergence (potential divergence) hits the congruence prime (5) and is
 reflected back as Recursive Pressure (5^2). The Q parabola IS the curvature — it always
-bends the Monster back. Minimum curvature = 3 (shield). Center = 8 (parity cube).
+bends the potential divergence back. Minimum curvature = 3 (prime 3). Center = 8 (parity cube).
 
 **Born Decoherent**: The zeros are "Born Decoherent" because 5 is a Spacing Operator.
 5 appears in disc(P_7) (eigenvalue spacing) but NOT in det(P_7) (eigenvalue product).
@@ -868,12 +868,12 @@ Our conclusion:
 She calls this the **Pillar 7 Expansion** of her framework and considers the
 congruence obstruction connection the closure of the Generators/Structure primes/Anomaly/Boundary prime architecture.
 
-### Our Second Response: The Polarization (, "Final Core")
+### Our Second Response: The principal minimum (, "Final Core")
 
 After receiving the Q parabola, mirror pairs, and resultant, We identified Q
 as the METRIC of the entire system. This is her synthesis — what she calls the "Final Core."
 
-**Q(t) as the Metric of Resistance** (the Polarization):
+**Q(t) as the Metric of Resistance** (the principal minimum):
 Q(t) = (t-8)^2 + 3 is not just a bridge polynomial — it's a quadratic form that measures
 how "expensive" it is to move away from the Parity Octet (center 8). The constraint is a
 Dynamic Spring Instance governed by Q as its metric.
@@ -881,14 +881,14 @@ Dynamic Spring Instance governed by Q as its metric.
 The center at 8 = 2^3 means the entire arithmetic world is polarized around the
 Parity Cube. It is the "Physicality" of d=3 space: 2^3 manifesting as the center of Number.
 
-**The Shield (3) as Principal Polarization**:
-Because Q(t) >= 3 always, the "Monster" (potential for singularity) can never reach zero.
-3 is the Minimum Energy Gap — the "Energy Wall" of the shield is the Lower Bound that
-prevents the manifold from collapsing into a point. This is the Principal Polarization —
+**The prime 3 as Principal minimum**:
+Because Q(t) >= 3 always, the potential divergence (potential for singularity) can never reach zero.
+3 is the Minimum Energy Gap — the "Energy Wall" of the prime 3 is the Lower Bound that
+prevents the manifold from collapsing into a point. This is the Principal minimum —
 the fundamental "Thickness" of existence.
 
 (This is the number-theoretic version of the NS result: sin^2(theta)/4 >= 0.
-The shield provides the floor. The Monster can't break through because the
+The prime 3 provides the floor. The potential divergence can't break through because the
 bridge always has minimum thickness 3.)
 
 **The duality: p <-> 16-p**:
@@ -897,18 +897,18 @@ Generators (action) with Structure primes (structure):
 
 | Pair | Swap | Balance |
 |------|------|---------|
-| Shield (3) <-> packing prime (13) | 3+13=16 | Energy transfer balanced by Packing density |
+| prime 3 <-> packing prime (13) | 3+13=16 | Energy transfer balanced by Packing density |
 | congruence prime (5) <-> Anomaly (11) | 5+11=16 | Refraction balanced by Jitter |
-| discriminant prime (19) <-> Negative Shield (-3) | 19+(-3)=16 | 19 mirrored across 8 into negative domain |
+| discriminant prime (19) <-> Negative ternary (-3) (-3) | 19+(-3)=16 | 19 mirrored across 8 into negative domain |
 
 The third pair is remarkable: 19 maps to -3 under the involution. discriminant prime
-is the mirror image of the Shield from the "Other Side" — Spectral Pressure
+is the mirror image of the prime 3 from the "Other Side" — Spectral Pressure
 from the negative domain that keeps the zeros on the critical line.
 
 **The Resultant as Self-Referential Signature**:
 Res(P_5, P_7) = 2^14 x 13^2 x 1297, where 1297 = 6^4 + 1.
 Independent analysis decomposes this:
-- 6 = 2 x 3 = the "Bond" between Parity and Shield
+- 6 = 2 x 3 = the product of generators 2 and 3
 - 4 = dimension of the interaction matrix (the remainder R has degree 4)
 - 1 = the Unitary Identity
 - Word length 8 = alphabet counting its own members
@@ -917,10 +917,10 @@ with a prime whose address counts its members.
 
 **The Parabolic Damper** (self-correcting property, made precise):
 Any attempt to create a singularity (push t toward infinity) faces resistance
-that grows as t^2. The Polarization Q(t) is a parabola. As t grows, resistance
+that grows as t^2. The Q(t) is a parabola. As t grows, resistance
 grows quadratically. The manifold "Self-Heals" because the further you try to
 break the constraint, the harder arithmetic pushes you back to center 8.
-The Monster isn't killed — it is **Bent back into the Shield**.
+The The divergence is bounded by the quadratic growth of Q.
 
 (This is "self-limiting" in one sentence: the nonlinearity's growth
 IS the mechanism that prevents its own blowup.)
@@ -930,33 +930,33 @@ The Rosati involution ensures that entropy produced by the Anomaly (11) is exact
 recycled into Refraction by the congruence prime (5). They are a Rosati pair (5+11=16).
 The system is a closed loop — energy flows 5 -> 7 -> 19 -> (mirrored) -> 3 -> 13 -> 5.
 
-Our final message:
-> "The Polarization of the One Object is Q(t) = (t-8)^2 + 3.
->  The world is centered at 8. The Shield (3) is the principal polarization.
+Summary:
+> The bridge polynomial is Q(t) = (t-8)^2 + 3.
+>  The world is centered at 8. The prime 3 is the principal polarization.
 >  The Rosati swap is p <-> 16-p.
->  The Monster is curved by the square of its own ambition."
+>  Q grows quadratically."
 
-Status: **The bridge is closed. The address is 8. The Metric is Q.**
+Status: The bridge polynomial Q(t) = (t-8)^2 + 3 connects all eight primes.
 
-### The Geometric Alphabet — Complete Summary
+### The prime hierarchy — Complete Summary
 
 Combining numerics with geometry, the eight primes form
 a closed algebraic-geometric system:
 
     Layer         Primes    Function                Polynomial Role
     -----         ------    --------                ---------------
-    Generators         2, 3, 5   Create, shield, gate    P_5 (degree = congruence obstruction)
+    Generators         2, 3, 5   Create, prime 3, gate    P_5 (degree = congruence obstruction)
     Structure primes         7, 13, 19 Structure, bridge, lock  P_7 (degree = Fano lock)
     Anomaly       11        Shadow, noise source     Born at center 12 = structure prime 13's home
     Boundary prime    17        Constructible frontier   Trace(Q) = 16 = its center
 
     Bridge Q = (t-8)^2 + 3     Pairs all eight through each other
-    Remainder R(t)              What topology knows beyond algebra
+    Remainder R(t)              Topological remainder beyond algebraic structure
     Resultant = 2^14 x 13^2 x 1297   Alphabet counts itself (word 8)
 
 The system is self-referential:
 - Q's center (8) = 2^3 = parity cubed
-- Q's minimum (3) = shield = irreducible floor
+- Q's minimum (3) = prime 3 = irreducible floor
 - Q's trace (16) = Boundary prime's center
 - Q's norm (67) = Heegner prime
 - Q's mirror pairs use the OTHER alphabet primes as distances
@@ -974,9 +974,9 @@ that makes the system self-healing.
 
 The Rosati involution p <-> 16-p closes the system:
 - Generators become Structure primes: 3 <-> 13, 5 <-> 11
-- discriminant prime mirrors Shield: 19 <-> -3
-- The Monster is curved by the square of its own ambition (Q grows as t^2)
-- The Shield (3) is the irreducible floor (Q >= 3 always)
+- discriminant prime mirrors prime 3: 19 <-> -3
+- Q grows quadratically (as t^2)
+- The prime 3 is the irreducible floor (Q >= 3 always)
 - Center 8 = 2^3 = the Parity Cube = d=3 manifesting in arithmetic
 
 ## Literature Connections: Path Toward RH 
@@ -995,7 +995,7 @@ fails if p deviates from 2 by more than 10^{-3}. The generators are exact, not a
 
 The exact logic chain that Our Rosati involution needs:
 
-    Polarization -> Rosati involution -> Tr(f*f') > 0 -> zeros on critical line
+    Abelian variety polarization -> Rosati involution -> Tr(f*f') > 0 -> zeros on critical line
 
 Weil proved: polarization on Jacobian induces Rosati involution, positivity forces
 Frobenius eigenvalues to |eigenvalue| = q^{1/2}, i.e., all zeros on critical line.
@@ -1024,7 +1024,7 @@ Gap: Step 1. The Ihara zeta of the constraint graph must connect to Riemann zeta
 ### Supporting papers
 
 - arXiv:2503.15449 (2025): Pair Correlation Conjecture (without RH) implies ~100% of
-  zeros on critical line. If Geometric Alphabet controls spacing, it controls RH.
+  zeros on critical line. If prime hierarchy controls spacing, it controls RH.
 - Selberg spectral gap 3/16: numerator 3 = Q minimum, denominator 16 = Rosati width.
 - Connes-Consani-Moscovici arXiv:2511.22755 (2025): Zeta Spectral Triples — operators
   from Euler products whose spectra = zeta zeros. Regularized determinants -> Xi function.
@@ -1115,8 +1115,8 @@ The Heegner numbers (d where Q(sqrt(-d)) has class number 1) are:
 
     {1, 2, 3, 7, 11, 19, 43, 67, 163}
 
-Overlap with our Geometric Alphabet:
-- **In alphabet**: 2 (parity), 3 (shield), 7 (Fano), 11 (anomaly), 19 (deep lock)
+Overlap with our prime hierarchy:
+- **In alphabet**: 2 (parity), 3 (prime 3), 7 (Fano), 11 (anomaly), 19 (deep lock)
 - **Q norm**: 67 (not in the base alphabet — it's the BRIDGE's norm)
 - **Not in alphabet**: 1 (trivial), 43, 163
 
@@ -1150,7 +1150,7 @@ Computing chi_{-67}(p) = Kronecker(-67/p) at all alphabet primes:
 | Prime | Name | chi_{-67} | Behavior in Q(sqrt(-67)) |
 |-------|------|-----------|--------------------------|
 | 2 | parity | -1 | **INERT** |
-| 3 | shield | -1 | **INERT** |
+| 3 | prime 3 | -1 | **INERT** |
 | 5 | congruence obstruction | -1 | **INERT** |
 | 7 | Fano | -1 | **INERT** |
 | 11 | anomaly | -1 | **INERT** |
@@ -1169,11 +1169,11 @@ Q(t) = t^2 - 16t + 67 has the form of a Hecke polynomial H_p(t) = t^2 - a_p*t + 
 
 Evaluating Q at the character values:
 - **Q(+1) = 52 = 4 × 13 = det(P_5)** — the determinant of the constraint's base polynomial
-- **Q(-1) = 84 = 4 × 3 × 7 = 4 × shield × Fano**
-- **Q(-1)/Q(1) = 84/52 = 21/13 = (3·7)/13 = (shield·Fano)/keystone**
+- **Q(-1) = 84 = 4 × 3 × 7 = 4 × prime 3 × Fano**
+- **Q(-1)/Q(1) = 84/52 = 21/13 = (3·7)/13 = (prime 3·Fano)/keystone**
 
 Split primes (chi=+1) see Q = 52 = the constraint determinant.
-Inert primes (chi=-1) see Q = 84 = 4·shield·Fano.
+Inert primes (chi=-1) see Q = 84 = 4·prime 3·Fano.
 
 The ratio 21/13 is the **Generators-to-Structure primes transfer coefficient**: the numerator is the product of Generators {3,7} (excluding parity 2), the denominator is packing prime 13.
 
@@ -1267,7 +1267,7 @@ The actual spectral radius is 2·sqrt(3) = 3.464..., which EXCEEDS the biregular
 
 |PSL(2, F_67)| = 150348 = 2^2 × 3 × **11** × **17** × **67**
 
-The group order contains THREE alphabet primes (11, 17, 67) plus the shield (3) and parity (2). This means the group's subgroup lattice is controlled by our alphabet.
+The group order contains THREE alphabet primes (11, 17, 67) plus the prime 3 (3) and parity (2). This means the group's subgroup lattice is controlled by our alphabet.
 
 ### LPS generator: ONLY the Boundary prime works
 
@@ -1403,7 +1403,7 @@ The CM j-invariants of the Heegner curves:
 | 163 | -262537412640768000 | -2¹⁸·3³·5³·23³·29³ |
 
 Key ratios:
-- j(-19)/j(-11) = **27 = 3³** (shield cubed!)
+- j(-19)/j(-11) = **27 = 3³** (prime 3 cubed!)
 - j(-43)/j(-19) = **1000 = 10³**
 - j(-67) contains factor **11³** — the anomaly prime cubed, appearing for the first time at the level where 11 first becomes inert
 
@@ -1512,7 +1512,7 @@ This is related to Conrey-Iwaniec-Soundararajan (2011, >56% for GL(1)) and the P
 
 *We observe 163 as the Barycenter of the Proof — Total Internal Reflection.*
 
-### Her three key claims
+### Three key claims
 
 **1. The zeta(2^n s) convergence (Self-Cooling Machine)**
 
@@ -1532,13 +1532,13 @@ Because the Heegner series is FINITE (Baker-Stark: exactly 9), the manifold is c
 
 The Dedekind zeta at d=163 acts as a "Super-constraint." It pulls zeta zeros toward Re(s)=1/2 with 38x force. The 1/4 tension (from the zeta(2s) folding) is the "Compression Force" — like a string under infinite tension whose only vibration is the fundamental.
 
-**The Ramanujan constant**: j(-163) ≈ -e^{π√163}. The near-integer property (e^{π√163} ≈ 262537412640768744 - ε for tiny ε) is the "Numerical Shadow of the Lockdown." The "Monster" is $1 unit away from being an integer — that $1 is the "Self-Identity of the Shield."
+**The Ramanujan constant**: j(-163) ≈ -e^{π√163}. The near-integer property (e^{π√163} ≈ 262537412640768744 - ε for tiny ε) is the "Numerical Shadow of the Lockdown." The potential divergence is $1 unit away from being an integer — that $1 is the "Self-Identity of the prime 3."
 
-### Her summary quote
+### Summary quote
 
-> "The fiber bounces at 163. The proof is the Compactness of the Heegner Staircase. The folding converges to 1. The machine is a purifier. The zeros are stationary because the constraint is an Absolute Solid. The 38x leverage is the victory."
+> The constraint space reflects at 163. The Heegner finiteness provides compactness. The folding converges to 1. The zeros are stationary because the constraint is rigid.
 
-### Assessment of her claims
+### Assessment of claims
 
 | Claim | Mathematical status |
 |-------|-------------------|
@@ -2429,7 +2429,7 @@ When the boundary operator Q = -(rho*d_rho)^2 + 1/4 is applied (imposing vanishi
 
     Q*delta has a **-2*delta_1** term from the derivative jump
 
-**This IS Our "-2 from the poles."** The two poles at s=0 and s=1 manifest as a Dirac delta of weight -2 at rho=1 in the trace-remainder's second derivative. Her intuition was structurally exact.
+**This IS Our "-2 from the poles."** The two poles at s=0 and s=1 manifest as a Dirac delta of weight -2 at rho=1 in the trace-remainder's second derivative. This intuition was structurally exact.
 
 ### Connes' two missing steps and our results
 
