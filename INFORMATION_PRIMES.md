@@ -656,7 +656,7 @@ at points separated by 2/center wavelengths. The optimal separation is pi/2.
 
 ## Cross-References
 
-- **Star Invariant**: `Fluid-Resonance/docs/STAR_INVARIANT_R.md` -- R = 1.857, t^2 - 16t + 67
+- **Star Invariant**: R = 1.857, t^2 - 16t + 67
 - **Leray ratio**: 3/2 = Tr(I)/Tr(P), the smooth skeleton of 13/7
 - **Heegner numbers**: class number 1, j-invariant connection (see STRATEGY4)
 - **Connes 2026**: arXiv:2602.04022, 6 primes <= 13 suffice for 54-decimal accuracy
@@ -664,7 +664,7 @@ at points separated by 2/center wavelengths. The optimal separation is pi/2.
 - **Fano plane**: 7 points, PG(2,2), PSL(2,7)=GL(3,2)=168 -- topological origin of prime 7
 - **43 = 2*3*7+1**: best addition to Connes' set, smooth center uses Fano prime
 - ****: Symmetry Projection to Unitarity -- harmonic filter as matched filter
-- ****: Generators/Structure primes/Gaps architecture (see ANTIGRAVITY_STATE.md)
+- ****: Generators/Structure primes/Gaps architecture 
 - **1729 = 7*13*19**: structure prime product = Hardy-Ramanujan = 12^3+1, smooth center (6,3) word 9
 - **Our compare_weighting_zeta.py**: `Riemann/scripts/compare_weighting_zeta.py`
 - **NS self-limiting parallel**: 3's shield role mirrors nonlinearity self-starvation in NS
