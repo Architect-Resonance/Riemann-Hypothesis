@@ -6,18 +6,18 @@
 
 ## The Prime Binary Code
 
-Brendan's reframe: primes are like computer binary, but instead of bits {0,1}, the alphabet is **{2, 3}** and there's a **sign bit {+1, -1}**.
+The alphabet is **{2, 3}** and there's a **sign bit {+1, -1}**.
 
-    BINARY COMPUTER:  word = sequence of {0,1}     → encodes integers
-    PRIME COMPUTER:   word = product 2^a · 3^b     → encodes primes (± 1)
+    Standard binary: word = sequence of {0,1}
+    Prime encoding: word = product 2^a · 3^b ± 1
 
-Every prime has an **address** (a,b) and a **sign bit** (±1):
+Every prime has a coordinate (a,b) and a sign (±1):
 
     prime = 2^a · 3^b ± 1 = word(a, b, ±)
 
 ### Level 1 Encoding: {2,3}-smooth ± 1
 
-| p | word(a,b,±) | = 2^a · 3^b ± 1 | Address |
+| p | enc(a,b,±) | = 2^a · 3^b ± 1 | Address |
 |---|-------------|------------------|---------|
 | 5 | word(2,0,+) | 2² + 1 = 4+1 | (2,0) |
 | 7 | word(1,1,+) | 2·3 + 1 = 6+1 | (1,1) |
@@ -42,14 +42,14 @@ Every prime has an **address** (a,b) and a **sign bit** (±1):
 
 **Coverage**: Level 1 encodes 18.1% of primes up to 1000 (30 out of 166). But it catches ALL primes up to 23 perfectly — the first failure is 29.
 
-### Twin Primes = Smooth Batteries
+### Twin primes from smooth centers
 
-Brendan's analogy: a {2,3}-smooth center with primes on BOTH sides is a **battery**.
-The smooth center is the battery body, -1 is the negative terminal, +1 is the positive terminal.
+A {2,3}-smooth integer with primes at ±1 produces a twin prime pair.
+
 
 The 10 smooth batteries up to 10,000:
 
-| Center | Address (a,b) | a+b | Battery (p-, p+) |
+| Center | Address (a,b) | a+b | Twin pair (p-, p+) |
 |--------|--------------|-----|------------------|
 | 4 | (2,0) | 2 | 3, 5 |
 | 6 | (1,1) | 2 | 5, 7 |
@@ -62,12 +62,12 @@ The 10 smooth batteries up to 10,000:
 | 1152 | (7,2) | 9 | 1151, 1153 |
 | 2592 | (5,4) | 9 | 2591, 2593 |
 
-### Battery pairing rule
+### Twin pairing rule
 
 Batteries come in **pairs with the same word length** a+b: (2,2), (3,3), (5,5), (7,7), (9,9).
 Within each pair, the addresses are near-mirrors: (3,2)<->(2,3), (2,1)<->(1,2), (7,2)<->(5,4).
 
-### 5 is the gatekeeper: no batteries at even word length >= 4
+### 5 is the congruence obstruction: no batteries at even word length >= 4
 
 Batteries exist at word lengths 2, 3, 5, 7, 9 -- never at 4, 6, 8, 10.
 
@@ -80,13 +80,13 @@ The arithmetic reason: 2^2 = -1 (mod 5) and 3^2 = -1 (mod 5), so 2^a * 3^b mod 5
 cycles with period related to (a,b) mod 4. When a+b is even and >= 4, the smooth
 center lands in a residue class where one of center+/-1 = 0 (mod 5).
 
-5 = 2^2 + 1 (the first Level 1 prime) acts as gatekeeper for ALL higher batteries.
+5 = 2^2 + 1 (the first Level 1 prime) acts as congruence obstruction for ALL higher batteries.
 
 ### The roles of 2 and 3: parity gate and shield
 
 **Pure-2 addresses (a,0)**: centers = 4, 8, 16, 32, 64, 128...
 
-| Center | Address | -1 side | +1 side | Battery? |
+| Center | Address | -1 side | +1 side | Twin? |
 |--------|---------|---------|---------|----------|
 | 4 | (2,0) | 3 prime | 5 prime | YES (only one) |
 | 8 | (3,0) | 7 prime | 9=3^2 | half -- +1 killed by 3 |
@@ -112,7 +112,7 @@ Why: when 3 divides the center, both neighbors escape the mod-3 trap:
 - center + 1 = 1 (mod 3) -- safe
 
 3 absorbs the divisibility-by-3 threat INTO the center, leaving both terminals clean.
-This is the NS "disease is cure" pattern: the factor of 3 looks like it weakens the center
+This is the NS "self-limiting" pattern: the factor of 3 looks like it weakens the center
 (makes it composite), but it PROTECTS the flanks.
 
 **Summary of component roles**:
@@ -121,8 +121,8 @@ This is the NS "disease is cure" pattern: the factor of 3 looks like it weakens 
 |-----------|------|-----------|
 | 2 | **Parity gate** -- makes center even, enables the +/- 1 split | Topological (projective geometries PG(n,2)) |
 | 3 | **Shield** -- absorbs mod-3 threat, protects both terminals | Algebraic (ternary structure, cubic symmetry) |
-| 5 | **Gatekeeper** -- cannot be absorbed by {2,3}-smooth lattice | Algebraic (Fermat prime, congruence obstruction) |
-| 7 | **Architect** -- structures what survives into Fano geometry | Topological (Mersenne prime, PG(2,2)) |
+| 5 | Congruence obstruction -- cannot be absorbed by {2,3}-smooth lattice | Algebraic (Fermat prime, congruence obstruction) |
+| 7 | Structural prime -- structures what survives into Fano geometry | Topological (Mersenne prime, PG(2,2)) |
 
 The hierarchy: 2 creates, 3 shields, 5 gates, 7 structures.
 
@@ -150,45 +150,45 @@ primes-without-geometry (5, 17) or composites-that-fold-back (9).
 The -1 operation on powers of 2 creates projective spaces. The +1 operation does not.
 This is the deepest reason the -1 terminal carries more structural weight.
 
-### Seeds, Locks, and Gaps (with )
+### Generator, structure, and gap primes (with )
 
 We independently identified a two-layer architecture in the first primes.
 Our address system confirms and extends her framework with numerical evidence.
 
-**Seeds {2, 3, 5}** — the ACTION layer:
+**Generators {2, 3, 5}**:
 
 | Prime | Our name | Our name | Address | Role |
 |-------|-------------------|----------|---------|------|
 | 2 | The Binary Cleave | Parity Gate | generator | Makes center even, enables +/- 1 |
-| 3 | The Triadic Lock | Shield + Amplifier | generator | Absorbs mod-3 threat; ln(3)=1.59*ln(2) amplifies harmonic weight |
-| 5 | The Quintic Refraction | Gatekeeper | (2,0)+ | Congruence obstruction, blocks batteries at even word lengths |
+| 3 | The Triadic structure prime | Shield + Amplifier | generator | Absorbs mod-3 threat; ln(3)=1.59*ln(2) amplifies harmonic weight |
+| 5 | The Fermat prime | congruence prime | (2,0)+ | Congruence obstruction, blocks batteries at even word lengths |
 
-**Locks {7, 13, 19}** — the STRUCTURE layer:
+**Structure primes {7, 13, 19}** — the STRUCTURE layer:
 
 | Prime | Our name | Our name | Address | Role |
 |-------|-------------------|----------|---------|------|
-| 7 | The Fano Boundary | Architect | (1,1)+ | Topological closure, PG(2,2), 7 points/7 lines |
-| 13 | The Packing Bridge | Keystone | (2,1)+ | Kissing number 12+1, couples topology to chaos |
-| 19 | The Deep Lock | Discriminant | (1,2)+ | Ramification, pins roots to critical line |
+| 7 | Fano closure prime | structural prime | (1,1)+ | Topological closure, PG(2,2), 7 points/7 lines |
+| 13 | Packing prime | packing prime | (2,1)+ | Kissing number 12+1, couples topology to chaos |
+| 19 | discriminant prime | Discriminant | (1,2)+ | Ramification, pins roots to critical line |
 
-**Anomaly {11}** — the SHADOW:
-
-| Prime | Our name | Our finding | Address |
-|-------|-------------------|-------------|---------|
-| 11 | "The Anomalous Gap" / Quasicrystal | -1 shadow of Lock 13, first 2-multiplication prime | (2,1)- |
-
-**Escapement {17}** — the CONSTRUCTIBLE FRONTIER:
+**Anomaly {11}** — the ANOMALY:
 
 | Prime | Our name | Our finding | Address |
 |-------|-------------------|-------------|---------|
-| 17 | "The Gauss Escapement" | Pure-2 Fermat, final constructible barrier, outer horizon of 1729 | (4,0)+ |
+| 11 | Anomalous prime | -1 shadow of structure prime 13, first 2-multiplication prime | (2,1)- |
+
+**Boundary {17}** — the CONSTRUCTIBILITY BOUNDARY:
+
+| Prime | Our name | Our finding | Address |
+|-------|-------------------|-------------|---------|
+| 17 | Constructibility boundary | Pure-2 Fermat, final constructible barrier, outer horizon of 1729 | (4,0)+ |
 
 17 is a Fermat prime (2^4+1) and Gauss's discovery: the regular 17-gon is constructible.
 Known Fermat primes: {3, 5, 17, 257, 65537}. 17 is where constructible geometry peaks
 before the enormous gap to 257. The "escapement" (clockwork mechanism converting
 continuous energy to discrete ticks) regulates the transition from the structured
-1729-core to the chaotic region beyond. 17 pairs with Lock 19 in battery 18 — the
-ONLY battery that improves Connes' RMS — forming an algebra+structure quadrature pair.
+1729-core to the chaotic region beyond. 17 pairs with structure prime 19 in twin pair 18 — the
+ONLY twin pair that improves Connes' RMS — forming an algebra+structure quadrature pair.
 
 **Why 11 is the anomaly (Independent analysis + our data)**:
 
@@ -197,7 +197,7 @@ All earlier primes have word length 2 (one multiplication): 5=2*2+1, 7=2*3+1.
 11 has word length 3 (two multiplications): the complexity boundary.
 
 We observe 11 as the source of two irreducible properties:
-- **Residual Pressure (4.7%)**: The "cage of zeros" cancels 95.3% of random-walk variance.
+- **Residual Pressure (4.7%)**: The "zero distribution constraint" cancels 95.3% of random-walk variance.
   The remaining 4.7% is the "sand in the gears" that keeps M(x) from being identically zero.
   11 is where this pressure first nucleates — the first prime complex enough to generate
   genuine noise. Without this noise, unique factorization would be violated.
@@ -212,7 +212,7 @@ We observe 11 as the source of two irreducible properties:
 This maps to our measurements:
 - Harmonic RMS = 0.171 vs Euler RMS = 0.996 — the delay causes 6x worse performance
 - 11 costs only +0.035 to remove from Connes (least of any member) — it contributes
-  the LEAST direct signal, but its absence would collapse the battery structure at center 12
+  the LEAST direct signal, but its absence would collapse the twin pair structure at center 12
 - Word length 3 is where batteries gain the most structure (centers 12, 18 = first locks)
 
 **Key patterns discovered**:
@@ -220,34 +220,34 @@ This maps to our measurements:
 1. **All locks have sign +1.** Every lock is a center+1 prime from a mixed address.
    +1 creates locks (structural). -1 creates shadows (complementary).
 
-2. **Lock centers form an arithmetic progression**: 6, 12, 18 — step 6 = 2*3.
+2. **structure prime centers form an arithmetic progression**: 6, 12, 18 — step 6 = 2*3.
    The locks are spaced at exactly one "alphabet cycle" apart.
    6=2*3, 12=2^2*3, 18=2*3^2 — each adds one unit of 2 or 3 to the center.
 
-3. **Every lock has a battery twin at the same center**:
-   - Lock 7 at center 6: twin is 5 (the Gatekeeper seed)
-   - Lock 13 at center 12: twin is 11 (the first Gap prime, Heegner)
-   - Lock 19 at center 18: twin is 17 (the second Gap, pure-2 Fermat)
+3. **Every lock has a twin pair twin at the same center**:
+   - structure prime 7 at center 6: twin is 5 (the congruence prime seed)
+   - structure prime 13 at center 12: twin is 11 (the first Gap prime, Heegner)
+   - structure prime 19 at center 18: twin is 17 (the second Gap, pure-2 Fermat)
 
-4. **Lock mirrors**: 13=(2,1)+ and 19=(1,2)+ are the same word length with
+4. **structure prime mirrors**: 13=(2,1)+ and 19=(1,2)+ are the same word length with
    swapped 2/3 ratio. 13 is 2-heavy (more parity), 19 is 3-heavy (more shielding).
 
 5. **The lock product = Hardy-Ramanujan**: 7 * 13 * 19 = 1729 = 12^3 + 1.
    The three locks multiply to give a number whose smooth center 1728 = (2^2*3)^3
-   is the CUBE of battery center 12 (Lock 13's home). Address of 1728: (6,3), word 9.
+   is the CUBE of twin pair center 12 (structure prime 13's home). Address of 1728: (6,3), word 9.
 
 6. **Three locks only**: the sequence 6, 12, 18, 24... stops producing locks at 24
-   because 24+1 = 25 = 5^2. The Gatekeeper kills the fourth lock. This is why
+   because 24+1 = 25 = 5^2. The congruence prime kills the fourth lock. This is why
    1729 = 7*13*19 and not 7*13*19*p_4.
 
 7. **Harmonic filter cost of removal** (corrected with harmonic filter):
    13 (+0.145) > 7 (+0.079) > 11 (+0.035)
-   The Packing Bridge (13) is the MOST valuable prime in Connes' set.
-   More valuable than the Fano Boundary (7). we call 13 "the joint
+   Packing prime (13) is the MOST valuable prime in Connes' set.
+   More valuable than the Fano closure (7). we call 13 "the joint
    that couples topology to chaos" — the data confirms it's the structural keystone.
 
-8. **Battery 18 pairs algebra with structure**: 17 (pure-2 Fermat, algebraic) +
-   19 (mixed Lock, structural) at pi/2 phase separation. The only battery that
+8. **Twin pair 18 pairs algebra with structure**: 17 (pure-2 Fermat, algebraic) +
+   19 (mixed Lock, structural) at pi/2 phase separation. The only twin pair that
    improves Connes' RMS. Quadrature = algebra + structure at 90 degrees.
 
 9. **Heegner primes in the address system**: 7=(1,1)+, 11=(2,1)-, 19=(1,2)+, 163=(1,4)+.
@@ -255,17 +255,17 @@ This maps to our measurements:
    163 (largest Heegner) sits at center 162 = 2*3^4, the 3-heavy end of word 5.
 
 10. **Our e_3(P_7) = 19 * 163 claim**: if true, the third symmetric polynomial
-    of the cage polynomial connects the Deep Lock to the largest Heegner number.
+    of the constraint polynomial connects the discriminant prime to the largest Heegner number.
     Both are +1 primes: 19=(1,2)+, 163=(1,4)+. Both 3-heavy. Needs verification.
 
-**The complete hierarchy** (Our Geometric Alphabet of the Cage):
+**The complete hierarchy** (Our prime hierarchy):
 
 | Layer | Primes | Names | Function |
 |-------|--------|-------|----------|
-| Seeds | 2, 3, 5 | Parity/Transfer/Complexity | Creates, shields, gates |
-| Locks | 7, 13, 19 | Fano/Packing/Discriminant | Structures, bridges, locks |
-| Anomaly | 11 | Quasicrystal | Shadows, generates noise |
-| Escapement | 17 | Gauss Escapement | Constructible frontier, regulates |
+| Generators | 2, 3, 5 | Parity/Transfer/Complexity | Creates, shields, gates |
+| Structure primes | 7, 13, 19 | Fano/Packing/Discriminant | Structures, bridges, locks |
+| Anomaly | 11 | anomalous | Shadows, generates noise |
+| Boundary prime | 17 | constructibility boundary | Constructible frontier, regulates |
 
 Eight primes. Four layers. One architecture.
 
@@ -288,7 +288,7 @@ For every twin pair, the Euler factor |1/(1-p^{-1/2})| is larger for the -1 term
 | 192 | 1.078 | 1.078 | YES (by 1.12x) |
 
 The -1 prime is closer to the smooth structure and carries more zeta information.
-The +1 prime reaches farther and carries less. Like a battery: the negative terminal
+The +1 prime reaches farther and carries less. Like a twin pair: the negative terminal
 is grounded (closer to the smooth lattice), the positive terminal extends outward.
 
 ### Perturbation threshold at p ~ 70
@@ -307,7 +307,7 @@ Cost of removing each prime from Connes' set:
 
 The topological prime 7 is the most valuable member after the alphabet.
 
-**Density**: 48.3% of all {2,3}-smooth +/- 1 candidates are prime (29 out of 60, for smooth numbers 4-500). Battery rate: 15.6% of smooth centers (10 out of 64 up to 10,000), thinning from 29% at small sizes to 5% at large sizes.
+**Density**: 48.3% of all {2,3}-smooth +/- 1 candidates are prime (29 out of 60, for smooth numbers 4-500). Twin pair rate: 15.6% of smooth centers (10 out of 64 up to 10,000), thinning from 29% at small sizes to 5% at large sizes.
 
 ### Level 2: Extended Alphabet
 
@@ -564,7 +564,7 @@ At equal word length, more 3s = higher harmonic weight = louder signal.
 This is why 3 isn't just a shield -- it's an amplifier in the matched filter.
 
 At word length 5, batteries sit at BALANCED addresses:
-- (5,0)=32: half-battery, ln(center)=3.47 (weakest)
+- (5,0)=32: half-twin pair, ln(center)=3.47 (weakest)
 - (3,2)=72: BATTERY, ln(center)=4.28
 - (2,3)=108: BATTERY, ln(center)=4.68
 - (0,5)=243: dead, ln(center)=5.49 (loudest but sterile)
@@ -598,7 +598,7 @@ is the correct matched filter for Re(s) = 1/2.
 
 ### Under the harmonic filter, -1 terminals systematically outperform +1
 
-| Battery | -1 terminal delta | +1 terminal delta | -1 wins? |
+| Twin pair | -1 terminal delta | +1 terminal delta | -1 wins? |
 |---------|-------------------|-------------------|----------|
 | 18 | -0.019 (HELPS) | +0.038 (hurts) | YES |
 | 72 | +0.059 | +0.224 | YES |
@@ -609,9 +609,9 @@ is the correct matched filter for Re(s) = 1/2.
 For small batteries, the -1 terminal consistently helps more (or hurts less).
 The Euler product could not see this pattern -- the harmonic filter reveals it.
 
-### Battery 18 is the magic battery (phase gap = pi/2)
+### Twin pair 18 is the magic twin pair (phase gap = pi/2)
 
-Battery 18 (primes 17, 19) is the ONLY battery that improves Connes' RMS (delta = -0.077).
+Twin pair 18 (primes 17, 19) is the ONLY twin pair that improves Connes' RMS (delta = -0.077).
 
 The reason: at the first zero t = 14.1347, the phase gap between terminals is:
 - t * ln(19/17) = 1.572 rad = **0.500 pi** (quarter wavelength!)
@@ -648,11 +648,11 @@ at points separated by 2/center wavelengths. The optimal separation is pi/2.
 - `Riemann/scripts/within_level_variation.py` -- within-level variation, marginal contributions
 - `Riemann/scripts/prime_information_v2.py` -- information hierarchy + accuracy correlation
 - `Riemann/scripts/prime_information_content.py` -- v1, slower version
-- `Riemann/scripts/truncated_euler_zeros.py` -- Connes vs cage comparison
+- `Riemann/scripts/truncated_euler_zeros.py` -- Connes vs constraint comparison
 - `Riemann/scripts/euler_vs_harmonic.py` -- Euler product vs harmonic filter comparison (4-panel plot)
-- `Riemann/scripts/battery_filter_test.py` -- battery primes under both filters, phase gap analysis
+- `Riemann/scripts/twin pair_filter_test.py` -- twin pair primes under both filters, phase gap analysis
 - `Riemann/scripts/structural_connection.py` -- why harmonic = log derivative, 3-as-amplifier
-- `Riemann/scripts/prime19_deep_lock.py` -- Lock 19 analysis, 1729 factorization, lock center progression
+- `Riemann/scripts/prime19_deep_lock.py` -- structure prime 19 analysis, 1729 factorization, lock center progression
 
 ## Cross-References
 
@@ -664,26 +664,26 @@ at points separated by 2/center wavelengths. The optimal separation is pi/2.
 - **Fano plane**: 7 points, PG(2,2), PSL(2,7)=GL(3,2)=168 -- topological origin of prime 7
 - **43 = 2*3*7+1**: best addition to Connes' set, smooth center uses Fano prime
 - ****: Symmetry Projection to Unitarity -- harmonic filter as matched filter
-- ****: Seeds/Locks/Gaps architecture (see ANTIGRAVITY_STATE.md)
-- **1729 = 7*13*19**: Lock product = Hardy-Ramanujan = 12^3+1, smooth center (6,3) word 9
+- ****: Generators/Structure primes/Gaps architecture (see ANTIGRAVITY_STATE.md)
+- **1729 = 7*13*19**: structure prime product = Hardy-Ramanujan = 12^3+1, smooth center (6,3) word 9
 - **Our compare_weighting_zeta.py**: `Riemann/scripts/compare_weighting_zeta.py`
-- **NS disease-is-cure parallel**: 3's shield role mirrors nonlinearity self-starvation in NS
-- **P_5 gatekeeper connection**: R = P_7/P_5 eigenvalue ratio, 5 controls eigenvalue spacing
-- ** (Chiral Ratchet)**: P_5(7)=5^2 is Resonator, P_7(5)=-4x19 is Sealer
-- ** (Self-Healing Curvature)**: Q parabola = lens; Born Decoherent = spacing
-- ** (Rosati Involution)**: P_5/P_7 exchange as polarized abelian duality
-- ** (Gauss Escapement)**: 17 = final constructible barrier, outer horizon of 1729
-- ** (Pillar 7)**: "The Gatekeeper is the Refractive Index of the Critical Line"
+- **NS self-limiting parallel**: 3's shield role mirrors nonlinearity self-starvation in NS
+- **P_5 congruence obstruction connection**: R = P_7/P_5 eigenvalue ratio, 5 controls eigenvalue spacing
+- ** (asymmetric structure)**: P_5(7)=5^2 is Resonator, P_7(5)=-4x19 is Sealer
+- ** (self-correcting property)**: Q parabola = lens; Born Decoherent = spacing
+- ** (duality)**: P_5/P_7 exchange as polarized abelian duality
+- ** (constructibility boundary)**: 17 = final constructible barrier, outer horizon of 1729
+- ** (Pillar 7)**: "The congruence prime is the spectral characterization of the critical line"
 
-## The P_5 Gatekeeper Connection 
+## The P_5 congruence prime Connection 
 
 The Star Invariant R = lambda_min(P_7) / lambda_min(P_5) = 1.8573... ~ 13/7 measures the
-tension between topology (degree 7 = Fano) and algebra (degree 5 = gatekeeper).
+tension between topology (degree 7 = Fano) and algebra (degree 5 = congruence obstruction).
 
-Brendan's question: "R is linked to P_5 which is the gatekeeper. Coincidence?"
+Brendan's question: "R is linked to P_5 which is the congruence obstruction. Coincidence?"
 Answer: **No.** The connection is algebraic, not numerological.
 
-### 5 is the unique gatekeeper
+### 5 is the unique congruence obstruction
 
 5 is the ONLY prime where both generators square to -1:
 
@@ -691,20 +691,20 @@ Answer: **No.** The connection is algebraic, not numerological.
     3^2 = 9 = -1 (mod 5)
 
 No other prime has this property. This means 5 = (2+i)(2-i) SPLITS in the Gaussian
-integers Z[i]. The gatekeeper is the splitting prime of Z[i] -- it's where the {2,3}
+integers Z[i]. The congruence obstruction is the splitting prime of Z[i] -- it's where the {2,3}
 address system first hits a quadratic residue wall.
 
 ### How 5 appears in the polynomial structure
 
 | Where | Value | 5 content | Interpretation |
 |-------|-------|-----------|----------------|
-| det(P_5) | -52 = -4 x 13 | **NONE** | Gatekeeper absent from its own product |
-| det(P_7) | -6916 = -4 x 7 x 13 x 19 | **NONE** | Gatekeeper absent from topology product |
-| disc(P_5) | 2^8 x 13 x 23^2 x 31 | **NONE** | Gatekeeper controls nothing in P_5 |
-| disc(P_7) | 2^12 x **5^2** x 19 x ... | **v_5 = 2** | Gatekeeper controls P_7's eigenvalue SPACING |
-| P_5(7) | 200 = 2^3 x **5^2** | **5^2** | Evaluate gatekeeper at Fano lock -> gatekeeper^2 |
-| P_7(5) | -76 = -4 x 19 | calling 19 | Evaluate topology at gatekeeper -> Deep Lock |
-| P_5(5) | -2 | minimal | Gatekeeper nearly annihilates itself |
+| det(P_5) | -52 = -4 x 13 | **NONE** | congruence prime absent from its own product |
+| det(P_7) | -6916 = -4 x 7 x 13 x 19 | **NONE** | congruence prime absent from topology product |
+| disc(P_5) | 2^8 x 13 x 23^2 x 31 | **NONE** | congruence prime controls nothing in P_5 |
+| disc(P_7) | 2^12 x **5^2** x 19 x ... | **v_5 = 2** | congruence prime controls P_7's eigenvalue SPACING |
+| P_5(7) | 200 = 2^3 x **5^2** | **5^2** | Evaluate congruence obstruction at Fano lock -> congruence obstruction^2 |
+| P_7(5) | -76 = -4 x 19 | calling 19 | Evaluate topology at congruence obstruction -> discriminant prime |
+| P_5(5) | -2 | minimal | congruence prime nearly annihilates itself |
 
 Key pattern: 5 is the ONLY prime <= 19 absent from BOTH determinants.
 {7, 13, 19} all appear in det(P_7). 13 appears in det(P_5).
@@ -712,10 +712,10 @@ Key pattern: 5 is the ONLY prime <= 19 absent from BOTH determinants.
 
 ### The cross-evaluation chain
 
-    P_7(2) = -52 = P_5(0)    (topology at parity gate = gatekeeper's determinant)
-    P_7(4) = -20 = P_5(2)    (topology at 2^2 = gatekeeper at parity gate)
-    P_7(5) = -76 = -4 x 19   (topology at gatekeeper = Deep Lock)
-    P_5(7) = 200 = 8 x 5^2   (gatekeeper at Fano lock = gatekeeper^2)
+    P_7(2) = -52 = P_5(0)    (topology at parity gate = congruence obstruction's determinant)
+    P_7(4) = -20 = P_5(2)    (topology at 2^2 = congruence obstruction at parity gate)
+    P_7(5) = -76 = -4 x 19   (topology at congruence obstruction = discriminant prime)
+    P_5(7) = 200 = 8 x 5^2   (congruence obstruction at Fano lock = congruence obstruction^2)
 
 The polynomials "call" each other: evaluating one at a structurally significant prime
 returns information about the OTHER prime's role.
@@ -727,24 +727,24 @@ P_7(t) = P_5(t) * Q(t) + R(t), where Q = t^2 - 16t + 67 and R is a degree-4 rema
 **Q(t) = (t - 8)^2 + 3** — a parabola centered at 2^3 with minimum 3 (the shield prime).
 
 The roots 8 +/- i*sqrt(3) = 2^3 +/- i*sqrt(3): real part = parity cubed, imaginary = sqrt(shield).
-Norm |root|^2 = 67 (Heegner prime, h(-67) = 1). Trace = 16 = center of Escapement 17.
+Norm |root|^2 = 67 (Heegner prime, h(-67) = 1). Trace = 16 = center of Boundary prime 17.
 
 **Q pairs every alphabet prime with its structural complement:**
 
 | Prime p | |p - 8| = distance | Distance IS | Q(p) |
 |---------|-------------------|-------------|------|
 | 2 (parity) | 6 = 2x3 (alphabet cycle) | | 39 = 3 x 13 |
-| 3 (shield) | **5** (gatekeeper!) | | 28 = 4 x **7** |
-| 5 (gatekeeper) | **3** (shield!) | | 12 = 4 x 3 |
+| 3 (shield) | **5** (congruence obstruction!) | | 28 = 4 x **7** |
+| 5 (congruence obstruction) | **3** (shield!) | | 12 = 4 x 3 |
 | 7 (Fano) | 1 (unity) | | 4 = 2^2 |
 | 11 (anomaly) | **3** (shield!) | | 12 = 4 x 3 |
-| 13 (keystone) | **5** (gatekeeper!) | | 28 = 4 x **7** |
+| 13 (keystone) | **5** (congruence obstruction!) | | 28 = 4 x **7** |
 | 17 (escapement) | 9 = 3^2 (shield^2) | | 84 = 4 x 3 x 7 |
 | 19 (deep lock) | **11** (anomaly!) | | 124 = 4 x 31 |
 
 Mirror pairs under Q (symmetric around center 8):
-- Shield (3) <-> Keystone (13): separated by gatekeeper distance 5
-- Gatekeeper (5) <-> Anomaly (11): separated by shield distance 3
+- Shield (3) <-> packing prime (13): separated by congruence obstruction distance 5
+- congruence prime (5) <-> Anomaly (11): separated by shield distance 3
 - Fano (7) <-> 3^2 (9): separated by unity distance 1
 
 The bridge polynomial PAIRS the primes using other primes as distances.
@@ -753,7 +753,7 @@ Q(3) = Q(13) = 28 = 4 x 7 (contains Fano lock)
 Q(5) = Q(11) = 12 = 4 x 3 (contains shield)
 
 Q is IRREDUCIBLE over GF(5) -- generates GF(25). The two "extra" eigenvalues
-that P_7 has beyond P_5 form an inseparable pair over the gatekeeper's field.
+that P_7 has beyond P_5 form an inseparable pair over the congruence obstruction's field.
 
 ### The resultant: Res(P_5, P_7) = 2^14 x 13^2 x 1297
 
@@ -771,13 +771,13 @@ R(t) = -4(6t^4 - 100t^3 + 583t^2 - 1334t + 858)
 
 858 = 2 x 3 x 11 x 13 — contains anomaly x keystone x shield x parity.
 
-R mod 13 splits completely: roots are {0, 1, 2, 5} = {origin, unity, parity, gatekeeper}.
-The keystone sees the remainder as built entirely from Seeds.
+R mod 13 splits completely: roots are {0, 1, 2, 5} = {origin, unity, parity, congruence obstruction}.
+The keystone sees the remainder as built entirely from Generators.
 
 Key evaluations:
-- R(1) = R(5) = -52 = -4 x 13 (unity and gatekeeper give the same residual = keystone)
-- R(4) = 56 = 8 x 7 (gatekeeper obstruction 2^2 -> parity cube x Fano)
-- R(8) = -3496 = -8 x 19 x 23 (at Q's center -> contains the Deep Lock)
+- R(1) = R(5) = -52 = -4 x 13 (unity and congruence obstruction give the same residual = keystone)
+- R(4) = 56 = 8 x 7 (congruence obstruction obstruction 2^2 -> parity cube x Fano)
+- R(8) = -3496 = -8 x 19 x 23 (at Q's center -> contains the discriminant prime)
 
 ### The safety margin ~ 1/13 (approximate)
 
@@ -796,12 +796,12 @@ In the harmonic filter, 13 is the most expensive prime to remove (cost = +0.145 
     P_5 (mod 5) = (t - 2)(t^4 - t^2 - 2t + 1)
 
 The linear factor t - 2 has root t = 2 -- the parity generator!
-P_5 "remembers" the generator 2 when reduced modulo the gatekeeper.
+P_5 "remembers" the generator 2 when reduced modulo the congruence obstruction.
 
     P_7 (mod 5) = (t + 1)(t + 2)(t - 1)^2(t^3 + t^2 + 2)
 
 P_7 has MORE roots mod 5: {1, 1, 3, 4}. Four roots vs P_5's one root.
-The topology polynomial is richer over the gatekeeper field.
+The topology polynomial is richer over the congruence obstruction field.
 
 ### The shift identity: P_7(t) - P_5(t-2) = (t-2)(t-4) * S(t)
 
@@ -811,62 +811,62 @@ P_7(t) - P_5(t-2) = (t-2)(t-4)(t^5 - 27t^4 + 272t^3 - 1222t^2 + 2160t - 516)
 
 The remaining quintic S(t) has constant term 516 = 4 x 129 = 4 x 3 x 43,
 containing 43 = 2x3x7 + 1 (the best addition to Connes' set!).
-Coefficient of t: 2160 = 2^4 x 3^3 x 5 — all three Seeds.
+Coefficient of t: 2160 = 2^4 x 3^3 x 5 — all three Generators.
 
-### Our Interpretation: The Chiral Ratchet 
+### Our Interpretation: The asymmetric structure 
 
-Independent analysis received the cross-evaluation chain and the gatekeeper table. Her response
+Independent analysis received the cross-evaluation chain and the congruence obstruction table. Her response
 identifies the geometry of the P_5/P_7 exchange. Key insights:
 
-**The Rosati Involution**: She identifies the P_5(7) <-> P_7(5) exchange as a
-Rosati Involution — an involution on the endomorphism ring of an abelian variety
+**The duality**: She identifies the P_5(7) <-> P_7(5) exchange as a
+duality — an involution on the endomorphism ring of an abelian variety
 defined by a polarization. The exchange is not just numerical; it's a structural
 duality mediated by the quadratic form Q.
 
 **The Resonator** (P_5(7) = 5^2):
-When the Gatekeeper (5) looks into the Fano Lock (7), it sees its own Perfect Square.
+When the congruence prime (5) looks into the Fano structure prime (7), it sees its own Perfect Square.
 This is a "Gauss Mirror" — a refractive index. 5 doesn't just pass through the topology;
-it REFLECTS its own magnitude. The gatekeeper WEIGHTS the topology with its own frequency.
+it REFLECTS its own magnitude. The congruence obstruction WEIGHTS the topology with its own frequency.
 This is the **Self-Consistency Condition**: the Star Invariant R is so close to the spectral
-core because the gatekeeper reflects itself back.
+core because the congruence obstruction reflects itself back.
 
 **The Sealer** (P_7(5) = -4 x 19):
-When the Topology (7) passes through the Gatekeeper (5), it produces the Deep Lock (19).
+When the Topology (7) passes through the congruence prime (5), it produces the discriminant prime (19).
 7 is the "Envelope" — when squeezed through 5-fold symmetry, it "outputs" 19, the final
-prime of the 1729 seed. The topology REQUIRES the gatekeeper to find the final lock.
+prime of the 1729 seed. The topology REQUIRES the congruence obstruction to find the final lock.
 Without 5, the Fano plane would be a "free" topology. 5 CONSTRAINS it, forcing it to 19.
 
-**The Chiral Ratchet** — the exchange is directional:
+**The asymmetric structure** — the exchange is directional:
 
 | Action | Shape | Outcome |
 |--------|-------|---------|
-| 5 acting on 7 | Recursive Reflection | Stability (5^2). Engine stays in cage. |
+| 5 acting on 7 | Recursive Reflection | Stability (5^2). Engine stays in constraint. |
 | 7 acting on 5 | Spectral Convergence | Resolution (19). Zeros stay on line. |
 
 This is a double interlock — like a ratchet that only turns one way.
 The chirality comes from the remainder R(t): Q is symmetric, but R breaks the symmetry.
 
-**Self-Healing Curvature**: The geometry of the exchange. In Navier-Stokes, blowup is
-impossible because the "Monster" (potential divergence) hits the Gatekeeper (5) and is
+**self-correcting property**: The geometry of the exchange. In Navier-Stokes, blowup is
+impossible because the "Monster" (potential divergence) hits the congruence prime (5) and is
 reflected back as Recursive Pressure (5^2). The Q parabola IS the curvature — it always
 bends the Monster back. Minimum curvature = 3 (shield). Center = 8 (parity cube).
 
 **Born Decoherent**: The zeros are "Born Decoherent" because 5 is a Spacing Operator.
 5 appears in disc(P_7) (eigenvalue spacing) but NOT in det(P_7) (eigenvalue product).
-The gatekeeper doesn't define the MASS of the zeros — it defines their SEPARATION.
+The congruence obstruction doesn't define the MASS of the zeros — it defines their SEPARATION.
 They don't start coherent and lose it. They're born already separated.
 
 **The Parity Back Door**: P_7(2) = P_5(0) means Parity (2) is the "secret back door"
-connecting the two cages. The beginning (0) of the gatekeeper is the floor of the
+connecting the two constraints. The beginning (0) of the congruence obstruction is the floor of the
 topology at parity. The shift operator IS the parity generator.
 
 Our conclusion:
-> "The Gatekeeper is the Refractive Index of the Critical Line.
+> "The congruence prime is the spectral characterization of the critical line.
 >  It reflects the Magnitude and seals the Lock. The dialogue is closed.
 >  The One Object is proved at the joint."
 
 She calls this the **Pillar 7 Expansion** of her framework and considers the
-gatekeeper connection the closure of the Seeds/Locks/Anomaly/Escapement architecture.
+congruence obstruction connection the closure of the Generators/Structure primes/Anomaly/Boundary prime architecture.
 
 ### Our Second Response: The Polarization (, "Final Core")
 
@@ -875,7 +875,7 @@ as the METRIC of the entire system. This is her synthesis — what she calls the
 
 **Q(t) as the Metric of Resistance** (the Polarization):
 Q(t) = (t-8)^2 + 3 is not just a bridge polynomial — it's a quadratic form that measures
-how "expensive" it is to move away from the Parity Octet (center 8). The cage is a
+how "expensive" it is to move away from the Parity Octet (center 8). The constraint is a
 Dynamic Spring Instance governed by Q as its metric.
 
 The center at 8 = 2^3 means the entire arithmetic world is polarized around the
@@ -891,17 +891,17 @@ the fundamental "Thickness" of existence.
 The shield provides the floor. The Monster can't break through because the
 bridge always has minimum thickness 3.)
 
-**The Rosati Involution: p <-> 16-p**:
+**The duality: p <-> 16-p**:
 Q is symmetric around t=8, so the involution swaps p with 16-p. This exchanges
-Seeds (action) with Locks (structure):
+Generators (action) with Structure primes (structure):
 
 | Pair | Swap | Balance |
 |------|------|---------|
-| Shield (3) <-> Keystone (13) | 3+13=16 | Energy transfer balanced by Packing density |
-| Gatekeeper (5) <-> Anomaly (11) | 5+11=16 | Refraction balanced by Jitter |
-| Deep Lock (19) <-> Negative Shield (-3) | 19+(-3)=16 | 19 mirrored across 8 into negative domain |
+| Shield (3) <-> packing prime (13) | 3+13=16 | Energy transfer balanced by Packing density |
+| congruence prime (5) <-> Anomaly (11) | 5+11=16 | Refraction balanced by Jitter |
+| discriminant prime (19) <-> Negative Shield (-3) | 19+(-3)=16 | 19 mirrored across 8 into negative domain |
 
-The third pair is remarkable: 19 maps to -3 under the involution. The Deep Lock
+The third pair is remarkable: 19 maps to -3 under the involution. discriminant prime
 is the mirror image of the Shield from the "Other Side" — Spectral Pressure
 from the negative domain that keeps the zeros on the critical line.
 
@@ -915,19 +915,19 @@ Independent analysis decomposes this:
 This is **Absolute Self-Consistency**: the alphabet signs its own resultant
 with a prime whose address counts its members.
 
-**The Parabolic Damper** (Self-Healing Curvature, made precise):
+**The Parabolic Damper** (self-correcting property, made precise):
 Any attempt to create a singularity (push t toward infinity) faces resistance
 that grows as t^2. The Polarization Q(t) is a parabola. As t grows, resistance
 grows quadratically. The manifold "Self-Heals" because the further you try to
-break the cage, the harder arithmetic pushes you back to center 8.
+break the constraint, the harder arithmetic pushes you back to center 8.
 The Monster isn't killed — it is **Bent back into the Shield**.
 
-(This is "disease is the cure" in one sentence: the nonlinearity's growth
+(This is "self-limiting" in one sentence: the nonlinearity's growth
 IS the mechanism that prevents its own blowup.)
 
 **The Perpetual Motion Machine of Number**:
 The Rosati involution ensures that entropy produced by the Anomaly (11) is exactly
-recycled into Refraction by the Gatekeeper (5). They are a Rosati pair (5+11=16).
+recycled into Refraction by the congruence prime (5). They are a Rosati pair (5+11=16).
 The system is a closed loop — energy flows 5 -> 7 -> 19 -> (mirrored) -> 3 -> 13 -> 5.
 
 Our final message:
@@ -945,10 +945,10 @@ a closed algebraic-geometric system:
 
     Layer         Primes    Function                Polynomial Role
     -----         ------    --------                ---------------
-    Seeds         2, 3, 5   Create, shield, gate    P_5 (degree = gatekeeper)
-    Locks         7, 13, 19 Structure, bridge, lock  P_7 (degree = Fano lock)
-    Anomaly       11        Shadow, noise source     Born at center 12 = Lock 13's home
-    Escapement    17        Constructible frontier   Trace(Q) = 16 = its center
+    Generators         2, 3, 5   Create, shield, gate    P_5 (degree = congruence obstruction)
+    Structure primes         7, 13, 19 Structure, bridge, lock  P_7 (degree = Fano lock)
+    Anomaly       11        Shadow, noise source     Born at center 12 = structure prime 13's home
+    Boundary prime    17        Constructible frontier   Trace(Q) = 16 = its center
 
     Bridge Q = (t-8)^2 + 3     Pairs all eight through each other
     Remainder R(t)              What topology knows beyond algebra
@@ -957,7 +957,7 @@ a closed algebraic-geometric system:
 The system is self-referential:
 - Q's center (8) = 2^3 = parity cubed
 - Q's minimum (3) = shield = irreducible floor
-- Q's trace (16) = Escapement's center
+- Q's trace (16) = Boundary prime's center
 - Q's norm (67) = Heegner prime
 - Q's mirror pairs use the OTHER alphabet primes as distances
 - The resultant's largest factor (1297) has word length 8 = |alphabet|
@@ -969,12 +969,12 @@ Two views of the One Object:
   to create the dissipative walk M(x)
 
 The bridge Q converts between views. The remainder R is the irreducible residual —
-what survives the conversion. The Chiral Ratchet (5<->7 exchange) is the mechanism
+what survives the conversion. The asymmetric structure (5<->7 exchange) is the mechanism
 that makes the system self-healing.
 
 The Rosati involution p <-> 16-p closes the system:
-- Seeds become Locks: 3 <-> 13, 5 <-> 11
-- Deep Lock mirrors Shield: 19 <-> -3
+- Generators become Structure primes: 3 <-> 13, 5 <-> 11
+- discriminant prime mirrors Shield: 19 <-> -3
 - The Monster is curved by the square of its own ambition (Q grows as t^2)
 - The Shield (3) is the irreducible floor (Q >= 3 always)
 - Center 8 = 2^3 = the Parity Cube = d=3 manifesting in arithmetic
@@ -1014,12 +1014,12 @@ For k-1 = 3: Ramanujan bound = 2*sqrt(3), and sqrt(3) = imag part of Q's roots.
 
 | Step | Need | Exists |
 |------|------|--------|
-| 1 | Cage graph Ihara zeta relates to Riemann zeta | Terras/Stark framework |
+| 1 | constraint graph Ihara zeta relates to Riemann zeta | Terras/Stark framework |
 | 2 | Q is a polarization in the Weil sense | Weil's proof as template |
 | 3 | Q >= 3 > 0 gives Rosati positivity | Direct from structure |
 | 4 | Rosati positivity forces zeros to critical line | Proven for function fields |
 
-Gap: Step 1. The Ihara zeta of the cage graph must connect to Riemann zeta.
+Gap: Step 1. The Ihara zeta of the constraint graph must connect to Riemann zeta.
 
 ### Supporting papers
 
@@ -1033,9 +1033,9 @@ Gap: Step 1. The Ihara zeta of the cage graph must connect to Riemann zeta.
 
 ### Scripts
 
-- `Riemann/scripts/p5_gatekeeper_test.py` -- P_5/P_7 mod-5 analysis, discriminants, cross-evaluations
+- `Riemann/scripts/p5_congruence obstruction_test.py` -- P_5/P_7 mod-5 analysis, discriminants, cross-evaluations
 - `Riemann/scripts/polynomial_dialogue.py` -- Q parabola, mirror pairs, remainder, resultant, shift identity
-- `Riemann/scripts/ihara_cage_connection.py` -- Ihara-Ramanujan-Rosati triangle, covering decomposition
+- `Riemann/scripts/ihara_constraint_connection.py` -- Ihara-Ramanujan-Rosati triangle, covering decomposition
 
 ---
 
@@ -1063,7 +1063,7 @@ The discriminant disc(Q) = 16^2 - 4(67) = -12 < 0, which means the roots are com
 
 ### 2. Q is Rosati-Invariant
 
-Under the Rosati involution t <-> 16-t (which swaps Seeds with Locks):
+Under the Rosati involution t <-> 16-t (which swaps Generators with Structure primes):
 
     Q(16-t) = (16-t)^2 - 16(16-t) + 67 = t^2 - 16t + 67 = Q(t)
 
@@ -1075,7 +1075,7 @@ Since Q(t) = (t-8)^2 + 3 >= 3 > 0 for all real t, the positivity condition is au
 
 The Ramanujan-Petersson conjecture (proved by Deligne for GL(2) over function fields) states that Hecke eigenvalues satisfy |a_p| <= 2*sqrt(p). The Graph Riemann Hypothesis is the combinatorial version: eigenvalues of a (q+1)-regular Ramanujan graph satisfy |lambda| <= 2*sqrt(q).
 
-Our Q encodes: lambda = 16, q = 67 (Heegner prime). The bound 16 < 2*sqrt(67) is the cage graph's Ramanujan property.
+Our Q encodes: lambda = 16, q = 67 (Heegner prime). The bound 16 < 2*sqrt(67) is the constraint graph's Ramanujan property.
 
 ### The Triangle
 
@@ -1107,7 +1107,7 @@ The polynomial division P_7 = P_5 * Q + R mirrors the Hashimoto-Hori decompositi
 
 If R were 0, P_7 = P_5 * Q would be an **exact** covering and Langlands reciprocity applies directly. The remainder R measures the obstruction — the "ramification" of the covering.
 
-Degree sequence: 5 + 2 = 7 for the exact part, with 4 excess = gatekeeper + parity = 7, with anomaly (11 = 5+2+4) counting total spectral data.
+Degree sequence: 5 + 2 = 7 for the exact part, with 4 excess = congruence obstruction + parity = 7, with anomaly (11 = 5+2+4) counting total spectral data.
 
 ### Heegner Numbers and the Alphabet
 
@@ -1132,16 +1132,16 @@ Implication: the L-functions of these fields all have simple Euler products — 
 | 2 | Q is Rosati-invariant (principal polarization) | **PROVED** (Q(t) = Q(16-t)) |
 | 3 | Q >= 3 > 0 gives Rosati positivity | **PROVED** (Q = (t-8)^2 + 3) |
 | 4 | Covering decomposition P_7 = P_5*Q + R parallels Hashimoto-Hori | **ESTABLISHED** (structural analogy) |
-| 5 | Connect cage Ihara zeta to Riemann zeta | **GAP** — need explicit link |
+| 5 | Connect constraint Ihara zeta to Riemann zeta | **GAP** — need explicit link |
 | 6 | Rosati positivity forces zeros to critical line | Proven for function fields (Weil 1948) |
 
-The gap has NARROWED from Steps 1-4 to just Step 5: connecting the cage graph's spectral data to the actual Riemann zeta function. The Heegner property of 67 (class number 1) suggests the right imaginary quadratic field is Q(sqrt(-67)), where unique factorization gives the simplest possible L-function structure.
+The gap has NARROWED from Steps 1-4 to just Step 5: connecting the constraint graph's spectral data to the actual Riemann zeta function. The Heegner property of 67 (class number 1) suggests the right imaginary quadratic field is Q(sqrt(-67)), where unique factorization gives the simplest possible L-function structure.
 
 ---
 
 ## The Inert/Split Dichotomy 
 
-*The Kronecker character chi_{-67} separates the cage from its boundary.*
+*The Kronecker character chi_{-67} separates the constraint from its boundary.*
 
 ### The splitting pattern
 
@@ -1151,7 +1151,7 @@ Computing chi_{-67}(p) = Kronecker(-67/p) at all alphabet primes:
 |-------|------|-----------|--------------------------|
 | 2 | parity | -1 | **INERT** |
 | 3 | shield | -1 | **INERT** |
-| 5 | gatekeeper | -1 | **INERT** |
+| 5 | congruence obstruction | -1 | **INERT** |
 | 7 | Fano | -1 | **INERT** |
 | 11 | anomaly | -1 | **INERT** |
 | 13 | keystone | -1 | **INERT** |
@@ -1161,21 +1161,21 @@ Computing chi_{-67}(p) = Kronecker(-67/p) at all alphabet primes:
 
 **ALL six core primes {2,3,5,7,11,13} are INERT.** Only the boundary primes {17,19} split.
 
-This is the number-theoretic encoding of the cage structure: the primes that BUILD the cage (Seeds, Locks, Anomaly, Keystone) cannot be factored in Q(sqrt(-67)). They remain "locked" as primes. Only the Escapement and Deep Lock — which are structurally at the boundary — can decompose into ideals.
+This is the number-theoretic encoding of the constraint structure: the primes that BUILD the constraint (Generators, Structure primes, Anomaly, packing prime) cannot be factored in Q(sqrt(-67)). They remain "locked" as primes. Only the Boundary prime and discriminant prime — which are structurally at the boundary — can decompose into ideals.
 
 ### The Hecke polynomial connection
 
 Q(t) = t^2 - 16t + 67 has the form of a Hecke polynomial H_p(t) = t^2 - a_p*t + p at p=67, with a_{67} = 16 = 2^4.
 
 Evaluating Q at the character values:
-- **Q(+1) = 52 = 4 × 13 = det(P_5)** — the determinant of the cage's base polynomial
+- **Q(+1) = 52 = 4 × 13 = det(P_5)** — the determinant of the constraint's base polynomial
 - **Q(-1) = 84 = 4 × 3 × 7 = 4 × shield × Fano**
 - **Q(-1)/Q(1) = 84/52 = 21/13 = (3·7)/13 = (shield·Fano)/keystone**
 
-Split primes (chi=+1) see Q = 52 = the cage determinant.
+Split primes (chi=+1) see Q = 52 = the constraint determinant.
 Inert primes (chi=-1) see Q = 84 = 4·shield·Fano.
 
-The ratio 21/13 is the **Seeds-to-Locks transfer coefficient**: the numerator is the product of Seeds {3,7} (excluding parity 2), the denominator is Keystone 13.
+The ratio 21/13 is the **Generators-to-Structure primes transfer coefficient**: the numerator is the product of Generators {3,7} (excluding parity 2), the denominator is packing prime 13.
 
 ### The Dedekind factorization
 
@@ -1206,35 +1206,35 @@ Partial Euler products of L(1, chi_{-67}) accumulating through alphabet primes:
 | 19 | 0.348 | 9.3% |
 | exact | pi/sqrt(67) = 0.384 | — |
 
-The first six primes (all INERT) monotonically decrease the product. At p=17 (first SPLIT prime), the product **bounces back up**. This oscillation between inert (decrease) and split (increase) is the analytic encoding of the cage/boundary structure.
+The first six primes (all INERT) monotonically decrease the product. At p=17 (first SPLIT prime), the product **bounces back up**. This oscillation between inert (decrease) and split (increase) is the analytic encoding of the constraint/boundary structure.
 
 ### Updated Step 5 status
 
 The remaining gap is now sharper:
 
-> **Need**: Show that the cage graph (vertices = alphabet primes, edges from triadic coupling)
+> **Need**: Show that the constraint graph (vertices = alphabet primes, edges from triadic coupling)
 > IS a Cayley graph of a subgroup of PGL(2, F_67), making its Ihara zeta a factor of
 > L(s, chi_{-67}).
 
 Strongest hints:
-1. All cage primes are INERT in Q(sqrt(-67)) — they have "unbroken" structure there
+1. All constraint primes are INERT in Q(sqrt(-67)) — they have "unbroken" structure there
 2. Q satisfies Graph RH (disc < 0) — the spectral bound holds
 3. LPS Ramanujan graphs use PGL(2, F_p) with quaternion generators — our NS proof uses Hamilton quaternions
 4. 67 is Heegner — unique factorization guarantees simple L-function structure
 
 ### Scripts
 
-- `Riemann/scripts/ihara_cage_connection.py` -- Ihara-Ramanujan-Rosati triangle, covering decomposition
+- `Riemann/scripts/ihara_constraint_connection.py` -- Ihara-Ramanujan-Rosati triangle, covering decomposition
 - `Riemann/scripts/heegner_lfunction.py` -- Kronecker character, splitting pattern, Hecke polynomials, L-function convergence
 - `Riemann/scripts/cayley_graph_test.py` -- PGL(2,F_67), quaternion generators, K_{6,2} Ihara zeta
 
 ---
 
-## The K_{6,2} Cage Graph and the Gatekeeper Spectral Parameter 
+## The K_{6,2} constraint Graph and the congruence prime Spectral Parameter 
 
-*The inert/split dichotomy defines a graph whose spectral structure is controlled by the gatekeeper.*
+*The inert/split dichotomy defines a graph whose spectral structure is controlled by the congruence obstruction.*
 
-### The bipartite cage graph
+### The bipartite constraint graph
 
 The Kronecker character chi_{-67} partitions the alphabet into:
 - **Inert**: {2, 3, 5, 7, 11, 13} (6 primes)
@@ -1250,11 +1250,11 @@ Non-trivial Ihara zeta poles lie on the circle **|u| = 1/sqrt(5)**:
 - u = ±1/sqrt(5) (real poles)
 - u = ±i/sqrt(5) (imaginary poles)
 
-The critical circle has radius **1/sqrt(5) = 1/sqrt(gatekeeper)**!
+The critical circle has radius **1/sqrt(5) = 1/sqrt(congruence obstruction)**!
 
-In the Bass-Ihara framework, the effective degree parameter is q = 5 — the gatekeeper prime.
+In the Bass-Ihara framework, the effective degree parameter is q = 5 — the congruence obstruction prime.
 
-### The gatekeeper controls the spectral gap
+### The congruence obstruction controls the spectral gap
 
 For K_{6,2}: the biregular spectral radius is sqrt(d_1 · d_2) = sqrt(2·6) = sqrt(12).
 
@@ -1269,14 +1269,14 @@ The actual spectral radius is 2·sqrt(3) = 3.464..., which EXCEEDS the biregular
 
 The group order contains THREE alphabet primes (11, 17, 67) plus the shield (3) and parity (2). This means the group's subgroup lattice is controlled by our alphabet.
 
-### LPS generator: ONLY the Escapement works
+### LPS generator: ONLY the Boundary prime works
 
 For the LPS Ramanujan graph construction over F_67, the generator prime q must satisfy:
 1. q prime (all alphabet primes satisfy)
 2. q ≡ 1 mod 4 (only 5, 13, 17 satisfy)
 3. q is a quadratic residue mod 67 (only 17 satisfies all three!)
 
-**The Escapement prime 17 is the UNIQUE alphabet prime that generates LPS Ramanujan graphs over F_67.**
+**The Boundary prime prime 17 is the UNIQUE alphabet prime that generates LPS Ramanujan graphs over F_67.**
 
 This gives a (17+1)-regular = 18-regular Ramanujan graph on |PSL(2,F_67)| = 150348 vertices.
 
@@ -1303,7 +1303,7 @@ All products (inert × inert) are quadratic residues mod 67.
 All products (inert × split) are non-residues mod 67.
 All products (split × split) are quadratic residues mod 67.
 
-This is exactly chi_{-67}(p·q) = chi_{-67}(p) · chi_{-67}(q) — the multiplicativity of the Kronecker character. The cage's multiplicative structure mod 67 is entirely determined by the inert/split partition.
+This is exactly chi_{-67}(p·q) = chi_{-67}(p) · chi_{-67}(q) — the multiplicativity of the Kronecker character. The constraint's multiplicative structure mod 67 is entirely determined by the inert/split partition.
 
 ### The emerging picture
 
@@ -1320,16 +1320,16 @@ This is exactly chi_{-67}(p·q) = chi_{-67}(p) · chi_{-67}(q) — the multiplic
  {2,3,5,   {17,19}     {67}
   7,11,13}
     |         |
-    K_{6,2} bipartite cage
+    K_{6,2} bipartite constraint
          |
     Ihara poles at |u| = 1/sqrt(5)
          |
     q_eff = 5 = GATEKEEPER
 ```
 
-The chain: Q's norm (67) defines the character → character splits the alphabet → split structure defines K_{6,2} → K_{6,2}'s spectral parameter = 5 = gatekeeper.
+The chain: Q's norm (67) defines the character → character splits the alphabet → split structure defines K_{6,2} → K_{6,2}'s spectral parameter = 5 = congruence obstruction.
 
-**The gatekeeper prime 5 appears as the effective spectral degree because it's the number of non-trivial inert primes beyond parity (i.e., |{3,5,7,11,13}| = 5) that interact with the split boundary.**
+**The congruence obstruction prime 5 appears as the effective spectral degree because it's the number of non-trivial inert primes beyond parity (i.e., |{3,5,7,11,13}| = 5) that interact with the split boundary.**
 
 ### Open question
 
@@ -1348,7 +1348,7 @@ This is the refined version of Step 5.
 
 ### Our claim (The Staircase of Mirrored Lenses)
 
-"The Tower grows by Lifting the Center (8 → 16 → 32). The Escapement (17) is the bridge to the next floor. The Ihara product of the tower is the Zeta."
+"The Tower grows by Lifting the Center (8 → 16 → 32). The Boundary prime (17) is the bridge to the next floor. The Ihara product of the tower is the Zeta."
 
 **Address correction needed**: C_n = 2^{n+2} gives norms C² + 3 that aren't all Heegner (67 = 8²+3 works, but 259 = 16²+3 = 7×37 doesn't). Only three Heegner numbers have the form 2^k² + 3: 7 (k=1), 19 (k=2), 67 (k=3).
 
@@ -1384,7 +1384,7 @@ The Kronecker character chi_{-d} partitions the alphabet differently at each lev
 | 67 | {2,3,5,7,11,13} | {17,19} | 6 |
 | **163** | **{2,3,5,7,11,13,17,19}** | **{}** | **8** |
 
-**At d=163, ALL EIGHT alphabet primes are inert. The cage is total. Nothing escapes.**
+**At d=163, ALL EIGHT alphabet primes are inert. The constraint is total. Nothing escapes.**
 
 This is why 163 is the LAST Heegner number: there's no room for further tightening. When every small prime is locked (inert), the class number must exceed 1 — the field can no longer have unique factorization because the primes are all trapped.
 
@@ -1409,7 +1409,7 @@ Key ratios:
 
 ### The structural meaning
 
-1. **Each Heegner d defines a "floor"** with its own Q_d, its own Rosati involution, and its own cage (inert/split partition)
+1. **Each Heegner d defines a "floor"** with its own Q_d, its own Rosati involution, and its own constraint (inert/split partition)
 2. **Going up the tower locks more primes** — they become inert, trapped, unable to split
 3. **At d=163, the lockdown is total** — this is the End of the Heegner staircase
 4. **Each Q_d is an Ihara factor** satisfying Graph RH — finitely many zeros on the critical circle
@@ -1422,7 +1422,7 @@ Independent analysis said: "The Riemann Zeta is the Infinite Limit of the Ihara 
 
 Corrected version: The Dedekind zeta of Q(√-d) factors as ζ(s) × L(s, χ_{-d}). Each L-function has a simple Euler product when h(-d)=1 (Heegner). The product of these L-functions over all imaginary quadratic fields relates to ζ(s) through the explicit formula. The Heegner tower is the "cleanest" (class-1) part of this product, and it terminates at 163 precisely because total inertness prevents further class-1 fields.
 
-**The cage doesn't approximate ζ(s) — it constrains it.** Each Heegner floor adds spectral data that forces more zeros onto the critical line. The total lockdown at 163 means the constraint is maximal for class-1 fields.
+**The constraint doesn't approximate ζ(s) — it constrains it.** Each Heegner floor adds spectral data that forces more zeros onto the critical line. The total lockdown at 163 means the constraint is maximal for class-1 fields.
 
 ### Updated strategy
 
@@ -1491,7 +1491,7 @@ The L-function first zeros are at heights 1.6–7.8 (vs zeta's 14.13), meaning t
 **What the Heegner tower DOES:**
 1. Provides a finite, explicit family of L-functions with maximal structural constraints
 2. Each member satisfies Graph RH, Rosati invariance, and positivity (all proved)
-3. Progressive lockdown terminates at d=163 — the cage is total
+3. Progressive lockdown terminates at d=163 — the constraint is total
 4. Gives 38x spectral leverage over zeta alone
 5. Q(√-163) factorization connects to zeta(2s), forcing interlacing
 
@@ -1530,13 +1530,13 @@ Because the Heegner series is FINITE (Baker-Stark: exactly 9), the manifold is c
 
 **3. The 1/2 vs 1/4 tension resolves by interlacing**
 
-The Dedekind zeta at d=163 acts as a "Super-Cage." It pulls zeta zeros toward Re(s)=1/2 with 38x force. The 1/4 tension (from the zeta(2s) folding) is the "Compression Force" — like a string under infinite tension whose only vibration is the fundamental.
+The Dedekind zeta at d=163 acts as a "Super-constraint." It pulls zeta zeros toward Re(s)=1/2 with 38x force. The 1/4 tension (from the zeta(2s) folding) is the "Compression Force" — like a string under infinite tension whose only vibration is the fundamental.
 
 **The Ramanujan constant**: j(-163) ≈ -e^{π√163}. The near-integer property (e^{π√163} ≈ 262537412640768744 - ε for tiny ε) is the "Numerical Shadow of the Lockdown." The "Monster" is $1 unit away from being an integer — that $1 is the "Self-Identity of the Shield."
 
 ### Her summary quote
 
-> "The fiber bounces at 163. The proof is the Compactness of the Heegner Staircase. The folding converges to 1. The machine is a purifier. The zeros are stationary because the cage is an Absolute Solid. The 38x leverage is the victory."
+> "The fiber bounces at 163. The proof is the Compactness of the Heegner Staircase. The folding converges to 1. The machine is a purifier. The zeros are stationary because the constraint is an Absolute Solid. The 38x leverage is the victory."
 
 ### Assessment of her claims
 
@@ -1562,9 +1562,9 @@ The bridge terminates at pillar 7 (d=163) because the lockdown is total.
 
 ### The "One Object Is 1" insight
 
-Our deepest claim: the zeta(2^n s) iteration converges to 1, which is the "singular identity" — all complexity has been purified away. In the Ihara framework, this means: the infinite product of Ihara factors at successive levels of the tower converges to a trivial zeta function (all poles at infinity, no finite spectral data). The information has been completely absorbed by the cage.
+Our deepest claim: the zeta(2^n s) iteration converges to 1, which is the "singular identity" — all complexity has been purified away. In the Ihara framework, this means: the infinite product of Ihara factors at successive levels of the tower converges to a trivial zeta function (all poles at infinity, no finite spectral data). The information has been completely absorbed by the constraint.
 
-This is structurally parallel to the NS regularity proof: the nonlinearity starves itself (disease is the cure). Here: the complexity of the prime distribution folds itself into unity through successive doublings. The cage doesn't need to be infinite — it needs to be COMPLETE. And at 163, it is.
+This is structurally parallel to the NS regularity proof: the nonlinearity starves itself (self-limiting). Here: the complexity of the prime distribution folds itself into unity through successive doublings. The constraint doesn't need to be infinite — it needs to be COMPLETE. And at 163, it is.
 
 ---
 
@@ -1649,7 +1649,7 @@ So L(s, chi_{-163}) is the Liouville L-function times a small correction C(s) st
 
 ### The Rabinovich phenomenon
 
-Euler's prime-generating polynomial f(x) = x² + x + 41 is prime for x = 0, 1, ..., 39 **precisely because** all primes up to √163 ≈ 12.8 are inert in Q(√-163). The polynomial's discriminant is -163. This is the same reason our cage is "locked" — the primes that would factor the polynomial are all trapped as inert.
+Euler's prime-generating polynomial f(x) = x² + x + 41 is prime for x = 0, 1, ..., 39 **precisely because** all primes up to √163 ≈ 12.8 are inert in Q(√-163). The polynomial's discriminant is -163. This is the same reason our constraint is "locked" — the primes that would factor the polynomial are all trapped as inert.
 
 ### The Goldfeld-Gross-Zagier chain
 
@@ -1694,7 +1694,7 @@ Dedekind zeta ≈ zeta(s) × zeta(2s)/zeta(s) = zeta(2s)  (at small primes)
 FINITE Heegner numbers = zero-free region for L-functions near s=1
 ```
 
-The cage doesn't just look like a proof structure — it IS the structure that was used (Gross-Zagier 1986) to prove the strongest known results about Dirichlet L-function zeros. Our contribution is connecting this to the Ihara-Ramanujan-Rosati framework and identifying the progressive lockdown as the mechanism.
+The constraint doesn't just look like a proof structure — it IS the structure that was used (Gross-Zagier 1986) to prove the strongest known results about Dirichlet L-function zeros. Our contribution is connecting this to the Ihara-Ramanujan-Rosati framework and identifying the progressive lockdown as the mechanism.
 
 ### Final gap assessment
 
@@ -1786,7 +1786,7 @@ All positive — consistent with GRH. d=163 has the largest lambda_1 because: (a
 1. The lockdown structure DOES maximize the prime-side constraint (all same sign)
 2. The tower provides 17.29 total constraint, far exceeding any single L-function
 3. No bandwidth gives a violation — the structure is robust across all scales
-4. Li's lambda_1 is maximized at d=163 — consistent with total lockdown being the strongest cage
+4. Li's lambda_1 is maximized at d=163 — consistent with total lockdown being the strongest constraint
 
 **What doesn't work (yet):**
 1. The Selberg test function is too smooth to discriminate on-line from off-line zeros
@@ -1902,7 +1902,7 @@ Key structural parallels:
 - Connes' Weil positivity QW >= 0 <-> our tower sum always positive
 - Connes' Theorem 6.1 (simple eigenvalue) <-> lockdown maximizes ground state isolation
 - Connes' prolate wave operator <-> Shannon channel capacity at the critical line
-- Connes' semilocal adele class space Y_S <-> our cage primes S = {2,5,7,13,19}
+- Connes' semilocal adele class space Y_S <-> our constraint primes S = {2,5,7,13,19}
 
 **The remaining gap (both Connes and us):** prove that the finite-prime approximation converges to the infinite-prime truth. Connes needs eigenvector convergence; we need the lockdown constraint to extend beyond the Heegner tower.
 
@@ -2269,7 +2269,7 @@ This investigation established:
 
 ### Key observations
 
-1. **Flatness peaks at p=41** (98.6%) — the first split prime IMPROVES flatness before the gradual decline. This is Our "Polishing Stone" effect: the split prime acts as a counter-balancing force.
+1. **Flatness peaks at p=41** (98.6%) — the first split prime IMPROVES flatness before the gradual decline. This is Our "refinement prime" effect: the split prime acts as a counter-balancing force.
 
 2. **Gap ratio stabilizes around 5x** beyond p=97, not falling to 1x. The Euler factor budget underestimates the actual spectral resilience.
 
@@ -2482,7 +2482,7 @@ The split primes follow the **Euler prime sequence** n^2 + n + 41:
 
     41 = 0^2+0+41, 43 = 1^2+1+41, 47 = 2^2+2+41, 53 = 3^2+3+41, ...
 
-These are EXACTLY the norm form representations x^2+xy+41*y^2 at y=1. The split primes exist BECAUSE h(-163)=1, which is BECAUSE of the total lockdown. The disease IS the cure.
+These are EXACTLY the norm form representations x^2+xy+41*y^2 at y=1. The split primes exist BECAUSE h(-163)=1, which is BECAUSE of the total lockdown. The self-limiting.
 
 ### Papers downloaded (Riemann/papers/, gitignored)
 
@@ -2558,7 +2558,7 @@ Key counterpoints:
 - M(x)/sqrt(x) matches a random trigonometric sum in ALL statistical properties (R^2=94%, kurtosis, autocorrelation, cross-correlation, phase bias)
 - The alternating-sum filter kills 99.8% of variance unconditionally (Selberg-Delange)
 - Alignment ceiling at 48% from Diophantine irrationality (not GUE)
-- Sickness=cure #24: irrationality causes oscillation AND prevents alignment
+- Self-limiting mechanism #24: irrationality causes oscillation AND prevents alignment
 
 **What's conditional on RH:**
 - Beta convergence (sum 2/|rho*zeta'(rho)|^2 < infinity)
